@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import {colors} from '../../theme';
+import {HOME_CARD_HEIGHT, HOME_CARD_WIDTH} from '../../helpers';
+
 const styles = StyleSheet.create({
   root: {
     borderColor: colors.gray,
@@ -7,14 +9,17 @@ const styles = StyleSheet.create({
     margin: 15,
     borderRadius: 10,
     padding: 10,
+    height: HOME_CARD_HEIGHT,
   },
   headerView: {
     marginBottom: 10,
   },
   contentStyles: {
-    height: 120,
-    width: 120,
+    height: HOME_CARD_HEIGHT - 100,
+    width: Dimensions.get('screen').width - 70,
     borderRadius: 10,
+    resizeMode: 'cover',
+    backgroundColor: colors.black,
   },
   video: {
     height: 120,
@@ -39,6 +44,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  contentContainerStyle: {
+    backgroundColor: colors.black,
+    width: '100%',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 export default styles;

@@ -13,6 +13,7 @@
     "clear-watchman": "watchman watch-del-all"
   },
   "dependencies": {
+    "@n1ru4l/react-in-center-of-screen": "^1.0.0-alpha.4",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
     "axios": "^1.6.2",

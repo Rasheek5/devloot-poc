@@ -1,7 +1,7 @@
 // @ts-nocheck because react-native-image-pan-zoom having issues with typescript config
 import {Dimensions, ImageStyle, StyleProp} from 'react-native';
 import React from 'react';
-import RnImageZoom from 'react-native-image-pan-zoom';
+import {RnImageZoom} from '../../packagesExports';
 import {FastImage} from '../../components';
 
 interface props {

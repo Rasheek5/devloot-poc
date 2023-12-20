@@ -1494,6 +1494,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@n1ru4l/react-in-center-of-screen@^1.0.0-alpha.4":
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@n1ru4l/react-in-center-of-screen/-/react-in-center-of-screen-1.0.0-alpha.4.tgz#f6d119f8b6ba6af2c0892e8577ebd72d9d7f2be1"
+  integrity sha512-JF+d7VPGVAGQdyIkN5U66PIPVGdxzx6RavUl6j8sGnPSdFig0WO9j3sJCOy5l284qMgSlTRKx2VYANKxJkm9Pg==
+
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
   resolved "https://registry.npmjs.org/@nicolo-ribaudo/eslint-scope-5-internals/-/eslint-scope-5-internals-5.1.1-v1.tgz"
@@ -4876,7 +4881,7 @@ lodash.throttle@^4.1.1:
   resolved "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
   integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
-lodash@^4.17.21:
+lodash@^4.0.0, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -5759,6 +5764,13 @@ react-native-image-progress@^1.2.0:
   integrity sha512-RkQydqw3p0i30vHRFFhuGNT/BXWUDJtBR5/hxJbQsfI/Ziipjm5M64bpw3VQqxUcZC8HLLg+ZQtBq1mtUlWjww==
   dependencies:
     prop-types "^15.8.0"
+
+react-native-intersection-observer@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-intersection-observer/-/react-native-intersection-observer-0.2.0.tgz#15a07cf2adbab6cd9821986168d5484405674ad9"
+  integrity sha512-h48i7AjYl1BLkfTupiJqv7dLUdLmxBIf4AxlrzvUvy5PLr3bnEFGTAMjaeUUcQklkdKSHRqIXP8wz1ex49my4g==
+  dependencies:
+    lodash "^4.0.0"
 
 react-native-progress@^5.0.1:
   version "5.0.1"

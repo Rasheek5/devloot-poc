@@ -1,7 +1,6 @@
-// @ts-nocheck because react-native-video-player having issues with typescript config
 import React from 'react';
 import {Dimensions} from 'react-native';
-import RnVIdeo from 'react-native-video-player';
+import {RnVideoPlayer} from '../../packagesExports';
 
 interface props {
   uri: string;
@@ -13,7 +12,7 @@ export const VideoPlayer = ({uri, videoHeight, videoWidth}: props) => {
   const {height, width} = Dimensions.get('window');
 
   return (
-    <RnVIdeo
+    <RnVideoPlayer
       video={{
         uri: uri,
       }}

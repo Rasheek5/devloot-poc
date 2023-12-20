@@ -7,9 +7,10 @@ interface props {
   uri: string;
   style?: StyleProp<ImageStyle>;
   indicatorSize?: number;
+  resizeMode?: 'stretch' | 'center' | 'contain' | 'cover' | 'repeat';
 }
 
-export const FastImage = ({uri, style, indicatorSize}: props) => {
+export const FastImage = ({uri, style, indicatorSize, resizeMode}: props) => {
   return (
     <Image
       source={{uri: uri}}
@@ -18,7 +19,7 @@ export const FastImage = ({uri, style, indicatorSize}: props) => {
         borderWidth: 0,
         color: colors.blue,
       }}
-      resizeMode="contain"
+      resizeMode={resizeMode ?? 'contain'}
       style={style}
     />
   );

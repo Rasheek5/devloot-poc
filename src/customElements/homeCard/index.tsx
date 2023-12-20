@@ -3,10 +3,10 @@ import React, {memo} from 'react';
 import {timeLineInterface} from '../../interfaces';
 import styles from './homeCard.styles';
 import {formatDateDDMMYY} from '../../helpers';
-import {PlayIcon} from '../../assets';
-import {FastImage, TextView} from '../../components';
+import {FastImage, TextView, VideoPlayerForCard} from '../../components';
 import {useNavigation} from '@react-navigation/native';
 import {MainStackNavigatorProps} from '../../navigation';
+import {InCenterConsumer} from '../../packagesExports';
 
 interface props {
   data: timeLineInterface;
@@ -46,19 +46,27 @@ export const HomeCard = memo(({data}: props) => {
         initialNumToRender={1}
         data={data?.contentMeta}
         keyExtractor={(_, i) => i?.toString()}
+        contentContainerStyle={styles.contentContainerStyle}
         renderItem={({item, index}) => {
           const isVideo = item?.type == 'VIDEO';
 
           if (isVideo) {
             return (
-              <TouchableOpacity
-                key={index}
-                style={styles.video}
-                onPress={() => {
-                  handleNavigation(null, item.fileId);
-                }}>
-                <PlayIcon />
-              </TouchableOpacity>
+              <InCenterConsumer>
+                {({isInCenter}: {isInCenter: any}) => {
+                  return (
+                    <TouchableOpacity
+                      onPress={() => {
+                        handleNavigation(null, item.fileId);
+                      }}>
+                      <VideoPlayerForCard
+                        isInCenter={isInCenter}
+                        uri={item?.fileId}
+                      />
+                    </TouchableOpacity>
+                  );
+                }}
+              </InCenterConsumer>
             );
           }
 

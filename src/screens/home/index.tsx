@@ -1,9 +1,9 @@
-import {FlatList} from 'react-native';
 import React, {useEffect, useMemo} from 'react';
-import {Container, Loader} from '../../components';
+import {Container, Loader, ReactCenterScreen} from '../../components';
 import {HomeCard} from '../../customElements';
 import {useTimeline} from '../../hooks';
 import {observer} from 'mobx-react';
+import {HOME_CARD_HEIGHT} from '../../helpers';
 
 export const Home = observer(() => {
   const timeline = useMemo(() => useTimeline(), []);
@@ -12,20 +12,21 @@ export const Home = observer(() => {
     timeline.fetchTimelines();
   }, []);
 
+  const _renderContent = () => {
+    // The top and bottom margin values are 30.
+    return (
+      <ReactCenterScreen
+        listItemHeight={HOME_CARD_HEIGHT + 30}
+        data={timeline.timelines}
+        renderItem={item => <HomeCard data={item} />}
+        flatListProps={{removeClippedSubviews: true, initialNumToRender: 7}}
+      />
+    );
+  };
+
   return (
     <Container>
-      {timeline.loding ? (
-        <Loader show={timeline.loding} />
-      ) : (
-        <FlatList
-          removeClippedSubviews
-          data={timeline.timelines}
-          keyExtractor={(_, i) => i.toString()}
-          renderItem={({item}) => <HomeCard data={item} />}
-          showsVerticalScrollIndicator={false}
-          initialNumToRender={7}
-        />
-      )}
+      {timeline.loding ? <Loader show={timeline.loding} /> : _renderContent()}
     </Container>
   );
 });
