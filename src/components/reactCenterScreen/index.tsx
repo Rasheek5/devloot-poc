@@ -1,5 +1,5 @@
 import {FlatList, Dimensions, FlatListProps} from 'react-native';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {IndexProvider, OffsetYProvider} from '../../packagesExports';
 
 interface props {
@@ -20,28 +20,31 @@ export const ReactCenterScreen = ({
   flatListProps,
 }: props) => {
   const {height: windowHeight} = Dimensions.get('screen');
+  const x = useMemo(() => {
+    return ({setOffsetY}: {setOffsetY: any}) => (
+      <FlatList
+        {...flatListProps}
+        data={data}
+        onScroll={ev => {
+          setOffsetY(ev.nativeEvent.contentOffset.y);
+        }}
+        keyExtractor={(_, i) => i.toString()}
+        renderItem={({item, index}) => (
+          <IndexProvider index={index}>
+            {() => renderItem(item, index)}
+          </IndexProvider>
+        )}
+        showsVerticalScrollIndicator={false}
+      />
+    );
+  }, [centerYEnd]);
   return (
     <OffsetYProvider
       columnsPerRow={1}
       listItemHeight={listItemHeight}
       centerYStart={centerYStart ?? (windowHeight * 1) / 3}
       centerYEnd={centerYEnd ?? (windowHeight * 2) / 3}>
-      {({setOffsetY}: {setOffsetY: any}) => (
-        <FlatList
-          {...flatListProps}
-          data={data}
-          onScroll={ev => {
-            setOffsetY(ev.nativeEvent.contentOffset.y);
-          }}
-          keyExtractor={(_, i) => i.toString()}
-          renderItem={({item, index}) => (
-            <IndexProvider index={index}>
-              {() => renderItem(item, index)}
-            </IndexProvider>
-          )}
-          showsVerticalScrollIndicator={false}
-        />
-      )}
+      {x}
     </OffsetYProvider>
   );
 };

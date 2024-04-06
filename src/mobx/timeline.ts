@@ -29,12 +29,12 @@ export const TimeLineStore = types
     },
     async fetchTimelines() {
       store.loding = true;
-      fetchTimelineData()
-        .then(res => {
-          this.setTimelines(res);
-        })
-        .catch(err => {
-          store.loding = false;
-        });
+
+      try {
+        const res = await fetchTimelineData();
+        this.setTimelines(res);
+      } catch (err) {
+        store.loding = false;
+      }
     },
   }));

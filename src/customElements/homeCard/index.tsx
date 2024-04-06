@@ -55,15 +55,13 @@ export const HomeCard = memo(({data}: props) => {
               <InCenterConsumer>
                 {({isInCenter}: {isInCenter: any}) => {
                   return (
-                    <TouchableOpacity
+                    <VideoPlayerForCard
+                      isInCenter={isInCenter}
+                      uri={item?.fileId}
                       onPress={() => {
                         handleNavigation(null, item.fileId);
-                      }}>
-                      <VideoPlayerForCard
-                        isInCenter={isInCenter}
-                        uri={item?.fileId}
-                      />
-                    </TouchableOpacity>
+                      }}
+                    />
                   );
                 }}
               </InCenterConsumer>
