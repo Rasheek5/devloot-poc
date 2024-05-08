@@ -8,7 +8,7 @@ const NativeStack = createNativeStackNavigator<MainStackParamList>();
 
 export const MainStack = () => {
   return (
-    <NativeStack.Navigator >
+    <NativeStack.Navigator>
       <NativeStack.Screen name={HOME} component={Home} />
       <NativeStack.Screen
         name={CONTENT_VIEWER}

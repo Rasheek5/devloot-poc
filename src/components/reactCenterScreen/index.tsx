@@ -1,6 +1,7 @@
 import {FlatList, Dimensions, FlatListProps} from 'react-native';
 import React, {useMemo} from 'react';
 import {IndexProvider, OffsetYProvider} from '../../packagesExports';
+import {TextView} from '../textView';
 
 interface props {
   listItemHeight: number;
@@ -20,7 +21,7 @@ export const ReactCenterScreen = ({
   flatListProps,
 }: props) => {
   const {height: windowHeight} = Dimensions.get('screen');
-  const x = useMemo(() => {
+  const flatList = useMemo(() => {
     return ({setOffsetY}: {setOffsetY: any}) => (
       <FlatList
         {...flatListProps}
@@ -35,6 +36,13 @@ export const ReactCenterScreen = ({
           </IndexProvider>
         )}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => {
+          return (
+            <TextView style={{textAlign: 'center', marginVertical: 10}}>
+              No Data Found
+            </TextView>
+          );
+        }}
       />
     );
   }, [centerYEnd]);
@@ -44,7 +52,7 @@ export const ReactCenterScreen = ({
       listItemHeight={listItemHeight}
       centerYStart={centerYStart ?? (windowHeight * 1) / 3}
       centerYEnd={centerYEnd ?? (windowHeight * 2) / 3}>
-      {x}
+      {flatList}
     </OffsetYProvider>
   );
 };

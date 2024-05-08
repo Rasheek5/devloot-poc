@@ -27,6 +27,11 @@ export const TimeLineStore = types
       store.timelines = data;
       store.loding = false;
     },
+
+    setLoadingOff() {
+      store.loding = false;
+    },
+
     async fetchTimelines() {
       store.loding = true;
 
@@ -34,7 +39,7 @@ export const TimeLineStore = types
         const res = await fetchTimelineData();
         this.setTimelines(res);
       } catch (err) {
-        store.loding = false;
+        this.setLoadingOff();
       }
     },
   }));
